@@ -61,7 +61,6 @@ class ImageProcessor:
         return self.img.copy()
 
 
-
 def encode_cv2(image: np.ndarray):
     is_success, buffer = cv2.imencode(".jpg", image)
     io_buf = BytesIO(buffer)
