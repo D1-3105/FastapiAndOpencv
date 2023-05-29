@@ -1,0 +1,26 @@
+version: "3.10"
+
+services:
+  redis:
+    image: redis/redis-stack-server:latest
+    env_file:
+      - core/api/config/.env
+    ports:
+      - "6379:6379"
+  app:
+    image: image-processing
+    env_file:
+      - core/api/config/.env
+    build:
+      context: .
+    ports:
+      - "8081:8081"
+    tty: true
+    stdin_open: true
+    environment:
+      - PYTHONPATH=/app
+    command: python /app/core/api/main.py
+    depends_on:
+      - redis
+    volumes:
+      - .:/app/

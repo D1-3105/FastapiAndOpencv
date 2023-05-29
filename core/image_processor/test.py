@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 import pytest
 import typing
-from image_processor import ImageProcessor
+from core.image_processor import ImageProcessor
 
 if typing.TYPE_CHECKING:
     from numpy import ndarray
